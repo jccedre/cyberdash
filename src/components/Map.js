@@ -61,7 +61,7 @@ const dataObj = new DataGenerator();
 
 class Map extends Component {
 
-  constructor() {
+  constructor(props) {
     super();
     this.popUpHandler = this.popUpHandler.bind(this);
     this.popDownHandler = this.popDownHandler.bind(this);
@@ -144,6 +144,11 @@ class Map extends Component {
             stroke: circleColor,
           }}
         />
+        {/* <SingleIncidentPopup
+          type={incident.observed.type}
+          name={incident.observed.name}
+          score={incident.observed.score}
+        /> */}
 
       </Marker>
     });

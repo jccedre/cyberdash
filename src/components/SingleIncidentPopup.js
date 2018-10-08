@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
 const StyledPopup = styled.div`
@@ -12,16 +13,23 @@ const StyledPopup = styled.div`
   padding: 1em;
 `;
 
-const singleIncidentPopup = ( props ) => {
-  return (
-    <StyledPopup>
-      <div>
-        <p>Type: {props.type}</p>
-        <p>Name: {props.name}</p>
-        <p>Score: {props.score}</p>
-      </div>
-    </StyledPopup>
-  )
+class singleIncidentPopup extends Component {
+  constructor(props) {
+    super(props);
+    this.domNode = document.createElement('div');
+    document.body.appendChild(this.domNode);
+  }
+  render() {
+    return ReactDOM.createPortal(
+      <StyledPopup>
+        <div>
+          <p>Type: {this.props.type}</p>
+          <p>Name: {this.props.name}</p>
+          <p>Score: {this.props.score}</p>
+        </div>
+      </StyledPopup>
+    ,this.domNode)
+  }
 }
 
 export default singleIncidentPopup;
